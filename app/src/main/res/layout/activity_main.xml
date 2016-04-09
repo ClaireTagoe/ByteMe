@@ -11,17 +11,18 @@
     tools:context="edu.carleton.myapplication.MainActivity"
     android:weightSum="1">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></LinearLayout>
-
     <Button
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:text="Burton"
         android:id="@+id/burton_button"
-        android:layout_weight="0.06" />
+        android:layout_weight="0.06"
+        android:onClick="onButtonClick" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></LinearLayout>
 
     <Button
         android:layout_width="350dp"
@@ -37,7 +38,8 @@
         android:text="Sayles"
         android:id="@+id/sayles_button"
         android:layout_gravity="center_vertical"
-        android:layout_weight="0.06" />
+        android:layout_weight="0.06"
+        android:onClick="onButtonClick" />
 
     <Button
         android:layout_width="350dp"
@@ -64,7 +66,8 @@
             android:layout_height="wrap_content"
             android:text="New Button"
             android:id="@+id/button"
-            android:layout_gravity="bottom" />
+            android:layout_gravity="bottom"
+            android:onClick="onButtonClick"/>
 
         <Button
             android:layout_width="wrap_content"
