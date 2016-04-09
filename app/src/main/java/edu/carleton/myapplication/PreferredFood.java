@@ -17,7 +17,6 @@ import java.util.List;
  */
 public class PreferredFood extends Activity{
 
-    List<String> foodList;
     EditText editText;
     ListView lv;
     ArrayAdapter<String> aa;
@@ -27,23 +26,22 @@ public class PreferredFood extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.food_preferred);
-        foodList =  new ArrayList<String>();
         editText = (EditText)findViewById(R.id.editText);
-        lv = (ListView)findViewById(R.id.listView);
     }
 
     public void onButtonClick(View view){
         this.addPreferredFood(editText);
         this.showFood();
+        this.editText.setText("");
     }
 
     public void addPreferredFood(EditText editText){
-        foodList.add(editText.getText().toString());
+        FoodList.food.add(editText.getText().toString());
     }
 
     public void showFood(){
         TextView tv = (TextView)findViewById(R.id.textView);
-        tv.setText(foodList.toString());
+        tv.setText(FoodList.food.toString());
 
     }
 }

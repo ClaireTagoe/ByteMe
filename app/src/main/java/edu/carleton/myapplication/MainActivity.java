@@ -34,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+    public void onSettingClick(View view) {
+        //do something when button is clicked.
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+
+    }
     public void onLDCClick(View view) {
         //do something when button is clicked.
         Intent intent = new Intent(this, LDCMenu.class);

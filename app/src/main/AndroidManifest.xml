@@ -35,7 +35,10 @@
         <activity android:name=".LDCMenu" />
         <activity android:name=".BurtonMenu" />
         <activity android:name=".SaylesMenu" />
-        <activity android:name=".WeitzMenu"></activity>
+        <activity android:name=".WeitzMenu" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>
