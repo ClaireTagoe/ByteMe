@@ -21,6 +21,7 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import java.util.List;
 import java.util.Set;
@@ -80,11 +81,13 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 }
             } else if (preference instanceof MultiSelectListPreference){
                 MultiSelectListPreference mslp = (MultiSelectListPreference) preference;
-                
-            }else {
-                // For all other preferences, set the summary to the value's
-                // simple string representation.
-                //preference.setSummary(stringValue);
+                Set<String> values = mslp.getValues();
+                for (String v:values){
+                    FoodList.food.remove(v);
+                }
+            } else if (preference instanceof EditTextPreference){
+                EditTextPreference etp = (EditTextPreference) preference;
+                FoodList.food.add(etp.getText());
             }
             return true;
         }
@@ -118,6 +121,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 PreferenceManager
                         .getDefaultSharedPreferences(preference.getContext())
                         .getString(preference.getKey(), ""));
+    }
+
+    private static void changeValuesForFoodList(Preference preference){
+        preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
+        String s = "nothing";
+        sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,s);
     }
 
     @Override
@@ -177,12 +186,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             addPreferencesFromResource(R.xml.pref_general);
             setHasOptionsMenu(true);
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
-            // to their values. When their values change, their summaries are
-            // updated to reflect the new value, per the Android Design
-            // guidelines.
-            bindPreferenceSummaryToValue(findPreference("example_text"));
-            bindPreferenceSummaryToValue(findPreference("example_list"));
+            changeValuesForFoodList(findPreference("add_food"));
+            changeValuesForFoodList(findPreference("remove_food"));
         }
 
         @Override
