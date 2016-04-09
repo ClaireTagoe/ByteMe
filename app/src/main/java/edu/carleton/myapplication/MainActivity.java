@@ -1,5 +1,6 @@
 package edu.carleton.myapplication;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,13 +28,32 @@ public class MainActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    public void onButtonClick(View burton) {
+    public void onButtonClick(View view) {
         //do something when button is clicked.
-        Button button = (Button)burton;
-        ((Button) burton).setText("awesome");
+        Intent intent = new Intent(this, PreferredFood.class);
+        startActivity(intent);
 
     }
-
+    public void onLDCClick(View view) {
+        //do something when button is clicked.
+        Intent intent = new Intent(this, LDCMenu.class);
+        startActivity(intent);
+    }
+    public void onBurtonClick(View view) {
+        //do something when button is clicked.
+        Intent intent = new Intent(this, BurtonMenu.class);
+        startActivity(intent);
+    }
+    public void onSaylesClick(View view) {
+        //do something when button is clicked.
+        Intent intent = new Intent(this, SaylesMenu.class);
+        startActivity(intent);
+    }
+    public void onWeitzClick(View view) {
+        //do something when button is clicked.
+        Intent intent = new Intent(this, WeitzMenu.class);
+        startActivity(intent);
+    }
 
     @Override
     public void onStart() {

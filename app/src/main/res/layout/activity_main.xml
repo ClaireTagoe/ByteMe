@@ -17,7 +17,7 @@
         android:text="Burton"
         android:id="@+id/burton_button"
         android:layout_weight="0.06"
-        android:onClick="onButtonClick" />
+        android:onClick="onBurtonClick" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -30,7 +30,9 @@
         android:text="LDC"
         android:id="@+id/ldc_button"
         android:layout_gravity="bottom"
-        android:layout_weight="0.06" />
+        android:layout_weight="0.06"
+        android:clickable="true"
+        android:onClick="onLDCClick" />
 
     <Button
         android:layout_width="350dp"
@@ -39,7 +41,7 @@
         android:id="@+id/sayles_button"
         android:layout_gravity="center_vertical"
         android:layout_weight="0.06"
-        android:onClick="onButtonClick" />
+        android:onClick="onSaylesClick" />
 
     <Button
         android:layout_width="350dp"
@@ -47,7 +49,8 @@
         android:text="Weitz Café"
         android:id="@+id/weitz_button"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.06" />
+        android:layout_weight="0.06"
+        android:onClick="onWeitzClick" />
 
     <Space
         android:layout_width="356dp"
@@ -74,14 +77,16 @@
             android:layout_height="wrap_content"
             android:text="New Button"
             android:id="@+id/button2"
-            android:layout_gravity="bottom" />
+            android:layout_gravity="bottom"
+            android:onClick="onButtonClick" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Button"
             android:id="@+id/button3"
-            android:layout_gravity="bottom" />
+            android:layout_gravity="bottom"
+            android:onClick="onButtonClick" />
     </LinearLayout>
 
 </LinearLayout>

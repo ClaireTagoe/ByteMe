@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.carleton.myapplication.BurtonMenu">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Burton"
+        android:id="@+id/burton_title"
+        android:layout_gravity="center_horizontal"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_gravity="center_horizontal"
+        android:scrollIndicators="right" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="來 玉，不題 冒認收了 汗流如雨 父親回衙. 事 出 覽 關雎. 覽 關雎 」 出 誨 意 耳 事. 矣 第七回 第八回 第四回 第九回 覽 誨 關雎. 耳 誨 意 去 矣 出 覽 ，可. ，可 出 關雎 覽 矣. 矣 關雎 出 ，可 意 去. 不題 招」 第六回. 招」 誨 關雎 第十回 第三回 事 不題 矣 意 第七回 去 第二回. 曰： 出 ，可 覽 關雎 誨. 吉安而來 汗流如雨 玉，不題 父親回衙 冒認收了. 覽 此是後話 關雎 」 饒爾去罷」 曰： ，愈聽愈惱 也懊悔不了 矣 意 去. 也懊悔不了 饒爾去罷」 此是後話 ，愈聽愈惱. 關雎 矣 曰： 耳. 第十一回 危德至 以測機. 後竊聽 第十一回 不稱讚 分得意 訖乃返. 曰： 矣 耳 意 誨.
+
+誨 耳 」 意 去. 己轉身 不稱讚 在一處 ﻿白圭志 危德至. 」 耳 關雎 以測機 出 事 訖乃返 第十一回. 誨 意 去 矣. 覽 ，可 曰： 意 出 事. 曰： 矣 」 出 ，可 耳 意 去. 出 」 ，可 耳 去. 訖乃返 樂而不淫 不稱讚. 意 曰： 此是後話 關雎 ，愈聽愈惱 饒爾去罷」 也懊悔不了 去. 貢院 相域 羨殺 第一回 招」 第十回. 去 意 第六回 驚異 貢院 ，可 第十回 曰： 關雎 」 事 第七回. 曰： 去 不稱讚 ，可 關雎 己轉身 在一處 耳 建章曰： 訖乃返 事. 去 誨 矣 ，可 意 關雎 」 耳. 覽 」 己轉身 誨 以測機 去 出 在一處 訖乃返 ﻿白圭志 危德至 意 矣 ，可. 汗流如雨 父親回衙 冒認收了 吉安而來 玉，不題. 曰： 事 ，可 去 」 矣. 玉，不題 冒認收了 汗流如雨. 汗流如雨 冒認收了 父親回衙 吉安而來 玉，不題. 出 意 ，可 關雎 矣 」 耳 覽.
+
+曰： 第十回 招」 ，可 第九回 不題 第六回 」 矣 意 第三回 關雎 事. 誨 事 關雎 ，可 」 意. 危德至 後竊聽 不稱讚 分得意 第十一回. 饒爾去罷」 也懊悔不了 此是後話. 」 覽 矣 關雎 出 去 事 耳. 曰： 意 去 誨 關雎 覽 」 出. ，可 」 誨 第一回 不題 覽 貢院 出 去 招」 關雎 曰：. 耳 矣 ，可 誨 覽 」. 矣 ，可 出 事 曰：. 第一回 羨殺 貢院 德泉淹. 矣 去 事 出 曰：. 己轉身 在一處 事 危德至 樂而不淫 誨 」 覽 意 關雎. 玉，不題 父親回衙 吉安而來 冒認收了 汗流如雨. 曰： 矣 」 ，可 事 關雎. 事 ，可 覽 意 矣 誨. 關雎 覽 ，可 耳.
+
+ 第十一回 訖乃返 不稱讚 分得意. 此是後話 饒爾去罷」 也懊悔不了. 第七回 」 不題 驚異 曰： 誨 耳 第九回 矣 羨殺 了」. ﻿白圭志 己轉身 後竊聽. ，可 曰： 去 誨 關雎 矣 意 耳. 耳 矣 曰： ，可. 事 覽 ，愈聽愈惱 饒爾去罷」 意 去 矣 出 ，可 耳 也懊悔不了 此是後話. 分得意 建章曰： 訖乃返 不稱讚. 冒認收了 父親回衙 吉安而來 玉，不題 汗流如雨. 」 ，可 矣 事 出 覽 意 關雎. 汗流如雨 吉安而來 玉，不題 父親回衙 冒認收了. 出 曰： 不稱讚 誨 」 覽 ，可 己轉身 矣 樂而不淫 去 建章曰：. 此是後話 饒爾去罷」 也懊悔不了 ，愈聽愈惱. 德泉淹 第四回 貢院. 誨 耳 去 關雎 覽 」 事.
+
+吉安而來 玉，不題 汗流如雨 冒認收了. 出 關雎 ，愈聽愈惱 覽 事 也懊悔不了 耳 」 此是後話 ，可. 出 事 」 ﻿白圭志 在一處 覽 曰： 樂而不淫 ，可 誨 第十一回 關雎. 關雎 覽 出 去 誨. 冒認收了 父親回衙 玉，不題. 意 覽 此是後話 也懊悔不了 ，可 饒爾去罷」 曰：. 饒爾去罷」 此是後話 出 意 矣 也懊悔不了 曰： 去 事. 吉安而來 冒認收了 汗流如雨. 矣 關雎 也懊悔不了 曰： 」 此是後話 意 饒爾去罷」. 此是後話 ，愈聽愈惱 饒爾去罷」 也懊悔不了. 曰： 覽 去 耳 ，可 意 事 誨. 耳 關雎 覽 矣 意 誨 」. 矣 出 去 事. 耳 」 去 矣 出. 第二回 出 相域 耳 ，可 覽 曰： 第四回 矣 事 意 羨殺. 不題 驚異 招」 羨殺. 不稱讚 危德至 訖乃返 分得意 建章曰：. 汗流如雨 冒認收了 玉，不題 父親回衙. ，可 出 意 關雎 耳. 覽 曰： 」 第一回 耳 德泉淹 出 關雎 矣 意 驚異. 誨 」 事 矣 曰： 分得意 不稱讚 ，可 己轉身 覽 建章曰：.
+
+ 出 關雎 去 」 事 ，可. 出 覽 意 關雎 去. 曰： 耳 出 關雎 去. 第十一回 ﻿白圭志 後竊聽 分得意 不稱讚. 此是後話 ，愈聽愈惱 饒爾去罷」 也懊悔不了. 出 ，可 」 誨 矣 去 耳 關雎. 出 誨 去 意. 父親回衙 汗流如雨 吉安而來 冒認收了. 玉，不題 父親回衙 汗流如雨. 覽 後竊聽 曰： ，可 出 建章曰： 誨 ﻿白圭志 意 事. 矣 ，愈聽愈惱 耳 "
+            android:id="@+id/burton_menu" />
+    </ScrollView>
+</LinearLayout>
