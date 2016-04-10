@@ -1,11 +1,15 @@
 package edu.carleton.myapplication;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,16 +20,16 @@ import java.io.PrintWriter;
 
 
 public class MenuFinder {
-    public static void menuSync(Context context) throws Exception {
+    public static void menuSync(Context context) throws IOException {
         Calendar calendar = Calendar.getInstance();
         int dayOfWeek = calendar.DAY_OF_WEEK - 1;
         //int dayOfWeek = 6;
         String dayNumber = "-" + dayOfWeek + "\">";
+        Log.i("AAAAAAAAAAAAAAAAAAA",dayNumber);
         List<List<String>> LDCWholeMenuList = Get_WholeMenuList("http://legacy.cafebonappetit.com/weekly-menu/106685", dayNumber);
         List<List<String>> BurtonWholeMenuList = Get_WholeMenuList("http://legacy.cafebonappetit.com/weekly-menu/106686", dayNumber);
         List<List<String>> WeitzWholeMenuList = Get_WholeMenuList("http://legacy.cafebonappetit.com/weekly-menu/106642", dayNumber);
         List<List<String>> SaylesWholeMenuList = Get_Sayles_WholeMenuList("http://legacy.cafebonappetit.com/weekly-menu/106647", dayNumber);
-
 
 
         // code below generate whole menu txt files
@@ -65,13 +69,14 @@ public class MenuFinder {
             LDCWholeMenuDisplay = LDCWholeMenuDisplay + "\n";
         }
 
-//        PrintWriter writer = new PrintWriter("F:/LDCWholeMenuDisplayMenu.txt", "UTF-8");
-//        writer.print(LDCWholeMenuDisplay);
-//        writer.close();
-
-        FileOutputStream fos = context.openFileOutput("LDCWholeMenuDisplayMenu.txt", Context.MODE_PRIVATE);
-        fos.write(LDCWholeMenuDisplay.getBytes());
-        fos.close();
+        FileOutputStream outputStream;
+        try {
+            outputStream = context.openFileOutput("LDCWholeMenuDisplayMenu.txt", Context.MODE_PRIVATE);
+            outputStream.write(LDCWholeMenuDisplay.getBytes());
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         // convert Burton WholeMenu to a single giant String
@@ -108,12 +113,15 @@ public class MenuFinder {
             }
             BurtonWholeMenuDisplay = BurtonWholeMenuDisplay + "\n";
         }
+        Log.i("BWMDDDDDDDDDDDDDDDDDDDDD",BurtonWholeMenuDisplay);
 
-
-        fos = context.openFileOutput("BurtonWholeMenuDisplayMenu.txt", Context.MODE_PRIVATE);
-        fos.write(BurtonWholeMenuDisplay.getBytes());
-        fos.close();
-
+        try {
+            outputStream = context.openFileOutput("BurtonWholeMenuDisplayMenu.txt", Context.MODE_PRIVATE);
+            outputStream.write(BurtonWholeMenuDisplay.getBytes());
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // convert Weitz WholeMenu to a single giant String
         String WeitzWholeMenuDisplay = "";
@@ -150,9 +158,14 @@ public class MenuFinder {
             WeitzWholeMenuDisplay = WeitzWholeMenuDisplay + "\n";
         }
 
-        fos = context.openFileOutput("WeitzWholeDisplayMenu.txt", Context.MODE_PRIVATE);
-        fos.write(WeitzWholeMenuDisplay.getBytes());
-        fos.close();
+        try {
+            outputStream = context.openFileOutput("WeitzWholeDisplayMenu.txt", Context.MODE_PRIVATE);
+            outputStream.write(WeitzWholeMenuDisplay.getBytes());
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         // convert Weitz WholeMenu to a single giant String
         String SaylesWholeMenuDisplay = "";
@@ -196,26 +209,30 @@ public class MenuFinder {
             }
             SaylesWholeMenuDisplay = SaylesWholeMenuDisplay + "\n";
         }
-        fos = context.openFileOutput("SaylesWholeDisplayMenu.txt", Context.MODE_PRIVATE);
-        fos.write(SaylesWholeMenuDisplay.getBytes());
-        fos.close();
+
+        try {
+            outputStream = context.openFileOutput("SaylesWholeDisplayMenu.txt", Context.MODE_PRIVATE);
+            outputStream.write(SaylesWholeMenuDisplay.getBytes());
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // the code below generates a giant string containing all the occurances of the preffered food
         List<List<List<String>>> PreferenceMenu = Generate_PreferenceList(MyFood.food, LDCWholeMenuList, BurtonWholeMenuList, WeitzWholeMenuList, SaylesWholeMenuList);
         String preferredMenuDisplay = "";
         // add Burton if not empty
-        if (!(PreferenceMenu.get(1).get(0).size()==0 && PreferenceMenu.get(1).get(1).size()==0 && PreferenceMenu.get(1).get(2).size()==0
-                && PreferenceMenu.get(1).get(3).size()==0)) {
+        if (PreferenceMenu.size()>=2) {
             preferredMenuDisplay = preferredMenuDisplay + "Burton:\n";
             // add breakfast
-            if (PreferenceMenu.get(1).get(0).size() != 0) {
+            if (PreferenceMenu.get(1).size()>=1 && PreferenceMenu.get(1).get(0).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Breakfast:\n";
                 for (String dish : PreferenceMenu.get(1).get(0)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
             // add brunch
-            if (PreferenceMenu.get(1).get(1).size() != 0) {
+            if (PreferenceMenu.get(1).size()>=2 && PreferenceMenu.get(1).get(1).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Brunch:\n";
                 for (String dish : PreferenceMenu.get(1).get(1)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
@@ -223,14 +240,14 @@ public class MenuFinder {
                 preferredMenuDisplay = preferredMenuDisplay +"\n";
             }
             // add lunch
-            if (PreferenceMenu.get(1).get(2).size() != 0) {
+            if (PreferenceMenu.get(1).size()>=3 && PreferenceMenu.get(1).get(2).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Lunch:\n";
                 for (String dish : PreferenceMenu.get(1).get(2)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
             // add dinner
-            if (PreferenceMenu.get(1).get(3).size() != 0) {
+            if (PreferenceMenu.get(1).size()>=4 && PreferenceMenu.get(1).get(3).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Dinner:\n";
                 for (String dish : PreferenceMenu.get(1).get(3)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
@@ -240,32 +257,31 @@ public class MenuFinder {
         }
 
         // add LDC if not empty
-        if (!(PreferenceMenu.get(0).get(0).size()==0 && PreferenceMenu.get(0).get(1).size()==0 && PreferenceMenu.get(0).get(2).size()==0
-                && PreferenceMenu.get(0).get(3).size()==0)) {
+        if ((PreferenceMenu.size()>=1)) {
             preferredMenuDisplay = preferredMenuDisplay + "LDC:\n";
             // add breakfast
-            if (PreferenceMenu.get(0).get(0).size() != 0) {
+            if (PreferenceMenu.get(0).size()>=1 && PreferenceMenu.get(0).get(0).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Breakfast:\n";
                 for (String dish : PreferenceMenu.get(0).get(0)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
             // add brunch
-            if (PreferenceMenu.get(0).get(1).size() != 0) {
+            if (PreferenceMenu.get(0).size()>=2 &&PreferenceMenu.get(0).get(1).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Brunch:\n";
                 for (String dish : PreferenceMenu.get(0).get(1)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
             // add lunch
-            if (PreferenceMenu.get(0).get(2).size() != 0) {
+            if (PreferenceMenu.get(0).size()>=3 && PreferenceMenu.get(0).get(2).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Lunch:\n";
                 for (String dish : PreferenceMenu.get(0).get(2)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
             // add dinner
-            if (PreferenceMenu.get(0).get(3).size() != 0) {
+            if (PreferenceMenu.get(0).size()>=4 && PreferenceMenu.get(0).get(3).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Dinner:\n";
                 for (String dish : PreferenceMenu.get(0).get(3)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
@@ -275,39 +291,38 @@ public class MenuFinder {
         }
 
         // add Sayles if not empty
-        if (!(PreferenceMenu.get(3).get(0).size()==0 && PreferenceMenu.get(3).get(1).size()==0 && PreferenceMenu.get(3).get(2).size()==0
-                && PreferenceMenu.get(3).get(3).size()==0 && PreferenceMenu.get(3).get(4).size()==0)) {
+        if ((PreferenceMenu.size()>=4)) {
             preferredMenuDisplay = preferredMenuDisplay + "Sayles:\n";
             // add breakfast
-            if (PreferenceMenu.get(3).get(0).size() != 0) {
+            if (PreferenceMenu.get(3).size()>=1 && PreferenceMenu.get(3).get(0).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Breakfast:\n";
                 for (String dish : PreferenceMenu.get(3).get(0)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
             // add brunch
-            if (PreferenceMenu.get(3).get(1).size() != 0) {
+            if (PreferenceMenu.get(3).size()>=2 && PreferenceMenu.get(3).get(1).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Brunch:\n";
                 for (String dish : PreferenceMenu.get(3).get(1)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
             // add lunch
-            if (PreferenceMenu.get(3).get(2).size() != 0) {
+            if (PreferenceMenu.get(3).size()>=3 && PreferenceMenu.get(3).get(2).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Lunch:\n";
                 for (String dish : PreferenceMenu.get(3).get(2)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
             // add dinner
-            if (PreferenceMenu.get(3).get(3).size() != 0) {
+            if (PreferenceMenu.get(3).size()>=4 && PreferenceMenu.get(3).get(3).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Dinner:\n";
                 for (String dish : PreferenceMenu.get(3).get(3)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
             // add latenight
-            if (PreferenceMenu.get(3).get(4).size() != 0) {
+            if (PreferenceMenu.get(3).size()>=5 && PreferenceMenu.get(3).get(4).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Late Night:\n";
                 for (String dish : PreferenceMenu.get(3).get(4)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
@@ -318,43 +333,68 @@ public class MenuFinder {
         }
 
         // add Weitz if not empty
-        if (!(PreferenceMenu.get(2).get(0).size()==0 && PreferenceMenu.get(2).get(1).size()==0 && PreferenceMenu.get(2).get(2).size()==0
-                && PreferenceMenu.get(2).get(3).size()==0)) {
+        if ((PreferenceMenu.size()>=3)) {
             preferredMenuDisplay = preferredMenuDisplay + "Weitz:\n";
             // add breakfast
-            if (PreferenceMenu.get(2).get(0).size() != 0) {
+            if (PreferenceMenu.get(2).size()>=1 && PreferenceMenu.get(2).get(0).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Breakfast:\n";
                 for (String dish : PreferenceMenu.get(2).get(0)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
             // add brunch
-            if (PreferenceMenu.get(2).get(1).size() != 0) {
+            if (PreferenceMenu.get(2).size()>=2 && PreferenceMenu.get(2).get(1).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Brunch:\n";
                 for (String dish : PreferenceMenu.get(2).get(1)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
             // add lunch
-            if (PreferenceMenu.get(2).get(2).size() != 0) {
+            if (PreferenceMenu.get(2).size()>=3 && PreferenceMenu.get(2).get(2).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Lunch:\n";
                 for (String dish : PreferenceMenu.get(2).get(2)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
             // add dinner
-            if (PreferenceMenu.get(2).get(3).size() != 0) {
+            if (PreferenceMenu.get(2).size()>=4 && PreferenceMenu.get(2).get(3).size() != 0) {
                 preferredMenuDisplay = preferredMenuDisplay + "Dinner:\n";
                 for (String dish : PreferenceMenu.get(2).get(3)) {
                     preferredMenuDisplay = preferredMenuDisplay + dish + "\n";
                 }
             }
         }
-        fos = context.openFileOutput("PreferenceDisplayMenu.txt", Context.MODE_PRIVATE);
+        FileOutputStream fos = context.openFileOutput("PreferenceDisplayMenu.txt", Context.MODE_PRIVATE);
         fos.write(preferredMenuDisplay.getBytes());
         fos.close();
-
+//        PrintWriter writer5 = new PrintWriter("FreferenceDisplayMenu.txt", "UTF-8");
+//        writer5.print(preferredMenuDisplay);
+//        writer5.close();
     }
+
+
+//    public void CreateEmptyInternalFile(String filename, List WriteData) {
+//        // add-write text into file
+//        try {
+//            // assume can automatically overwrite
+//            FileOutputStream fileout=openFileOutput(filename, MODE_PRIVATE);
+//            OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
+//            outputWriter.write(textmsg.getText().toString());
+//            outputWriter.close();
+//
+//            //display file saved message
+//            Toast.makeText(getBaseContext(), "File saved successfully!",
+//                    Toast.LENGTH_SHORT).show();
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+
+
+
+
 
 
 
@@ -491,7 +531,9 @@ public class MenuFinder {
 
         try {
             DiningHallconnect = DiningHall.openConnection();
-            BufferedReader WholeMenuList = new BufferedReader(new InputStreamReader(DiningHallconnect.getInputStream()));
+            InputStream ips = DiningHallconnect.getInputStream();
+            InputStreamReader ipsr = new InputStreamReader(ips);
+            BufferedReader WholeMenuList = new BufferedReader(ipsr);
             String dish = null;
 
             String inputLine;
@@ -548,7 +590,6 @@ public class MenuFinder {
         WholeMenuList1.add(List_D);
         return WholeMenuList1;
     }
-
     public static List<List<String>> Get_Sayles_WholeMenuList(String website, String dayNumber) throws MalformedURLException {
         ArrayList List_B = new ArrayList();
         ArrayList List_Br = new ArrayList();

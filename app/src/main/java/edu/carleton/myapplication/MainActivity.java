@@ -2,17 +2,17 @@ package edu.carleton.myapplication;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.ActionBar;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-import static java.lang.Thread.sleep;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,11 +26,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try {
-            MenuFinder.menuSync(getApplicationContext());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+//        Thread thread = new Thread() {
+//            @Override
+//            public void run() {
+//                try {
+//                    MenuFinder.menuSync(getApplicationContext());
+//                    Log.i("END", "End");
+//                } catch (MalformedURLException e) {
+//                    Log.d("MFUE", "MFUE");
+//                }
+//            }
+//        };
+//        thread.start();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -62,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onBurtonClick(View view) {
         //do something when button is clicked.
+        try {
+            MenuFinder.menuSync(getApplicationContext());
+            Log.i("END", "End");
+        } catch (MalformedURLException e) {
+            Log.d("MFUE", "MFUE");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Intent intent = new Intent(this, BurtonMenu.class);
         startActivity(intent);
     }

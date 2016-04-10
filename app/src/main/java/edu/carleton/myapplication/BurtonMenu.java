@@ -3,6 +3,8 @@ package edu.carleton.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +13,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.util.Calendar;
+import java.util.List;
+
+import static edu.carleton.myapplication.MenuFinder.Get_WholeMenuList;
 
 public class BurtonMenu extends AppCompatActivity {
     Intent intent = getIntent();
@@ -18,17 +25,15 @@ public class BurtonMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_burtonmenu);
-        TextView textView = (TextView)findViewById(R.id.burton_menu);
-        textView.setText(readMenu());
     }
 
-    public String readMenu(){
+    public void onNewButtonClick(View view) {
         String s="";
+        StringBuilder sb = new StringBuilder();
         try {
             FileInputStream fis = openFileInput("BurtonWholeMenuDisplayMenu.txt");
             InputStreamReader InputRead= new InputStreamReader(fis);
             BufferedReader br = new BufferedReader(InputRead);
-            StringBuilder sb = new StringBuilder();
             while ((s = br.readLine())!= null){
                 sb.append(s);
                 sb.append("0");
@@ -38,7 +43,8 @@ public class BurtonMenu extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return s;
+        TextView tv = (TextView)findViewById(R.id.burton_menu);
+        tv.setText(sb.toString());
     }
 
 }
