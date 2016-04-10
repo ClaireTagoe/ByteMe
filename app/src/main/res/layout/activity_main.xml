@@ -9,82 +9,115 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.carleton.myapplication.MainActivity"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="#274862">
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="600px"
+        android:layout_height="150px"
         android:text="Burton"
         android:id="@+id/burton_button"
         android:layout_weight="0.06"
-        android:onClick="onBurtonClick" />
+        android:onClick="onBurtonClick"
+        android:background="#182C3D"
+        android:layout_marginBottom="30px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:theme="Helv"
+        android:typeface="serif" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="600px"
+        android:layout_height="150px"
         android:text="LDC"
         android:id="@+id/ldc_button"
-        android:layout_gravity="bottom"
+        android:layout_gravity="center_horizontal|bottom"
         android:layout_weight="0.06"
         android:clickable="true"
-        android:onClick="onLDCClick" />
+        android:onClick="onLDCClick"
+        android:layout_marginBottom="30px"
+        android:background="#992C3C"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:typeface="serif" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="600px"
+        android:layout_height="150px"
         android:text="Sayles"
         android:id="@+id/sayles_button"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center_horizontal"
         android:layout_weight="0.06"
-        android:onClick="onSaylesClick" />
+        android:onClick="onSaylesClick"
+        android:layout_marginBottom="30px"
+        android:background="#D96831"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:typeface="serif" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="600px"
+        android:layout_height="150px"
         android:text="Weitz Café"
         android:id="@+id/weitz_button"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.06"
-        android:onClick="onWeitzClick" />
+        android:onClick="onWeitzClick"
+        android:layout_marginBottom="30px"
+        android:background="#E6B33D"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:typeface="serif" />
 
     <Space
-        android:layout_width="356dp"
-        android:layout_height="85dp"
-        android:layout_weight="0.58" />
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        android:layout_weight="0.32" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:gravity="bottom|center"
         android:baselineAligned="false">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Menu"
+            android:text="Favorite"
             android:id="@+id/button"
-            android:layout_gravity="bottom"
             android:onClick="onButtonClick"
-            android:gravity="top" />
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginRight="15dp"
+            android:foregroundGravity="center|center_vertical|center_horizontal"
+            android:textSize="15dp"
+            android:typeface="serif" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Food"
+            android:text="Edit Tag"
             android:id="@+id/button2"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center"
             android:onClick="onFoodClick"
-            android:gravity="top" />
+            android:gravity="center"
+            android:textSize="15dp"
+            android:typeface="serif" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Settings"
             android:id="@+id/button3"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center"
             android:onClick="onSettingClick"
-            android:gravity="top" />
+            android:gravity="center"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            android:typeface="serif" />
     </LinearLayout>
 
 </LinearLayout>
