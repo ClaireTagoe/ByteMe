@@ -13,9 +13,6 @@ import android.util.Log;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- * Created by Ruyi on 4/9/16.
- */
 public class NotificationService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
@@ -29,7 +26,7 @@ public class NotificationService extends Service {
 //        Date StartDate =  new Date();
 //        StartDate.setHours(4);
 //        mTimer.schedule(timerTask, StartDate,24*60*60*1000);
-        mTimer.schedule(timerTask, 2000, 10*1000);
+        mTimer.schedule(timerTask, 2000, 8*60*60*1000);
 
     }
 
@@ -95,7 +92,7 @@ public class NotificationService extends Service {
 
     public void notifiiy(){
 
-        String FavouriteDish = "Omlet";
+        String FavouriteDish = "Chicken";
         String Place = "LDC";
         NotificationCompat.Builder mBuilder =
 

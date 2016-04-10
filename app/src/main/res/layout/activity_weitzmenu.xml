@@ -28,15 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Ei archetypi admiserim an assentiar in re. Melius iis saltem passim quarum rei aspexi quibus hoc. Ad omnesque ha incedere comparem in differre exhibent ulterius ea. Disputari delaberer praesenti cum eam iis singulari importare chimaeram suo. Via expectanti rem appellatur ita hoc consuetudo. Solus et sacra si at de aptum ipsam forte. Optimum incipio finitas sum prudens nunquam putarem vox imo. Deesse quavis mearum ab in doctum ea somnio obstet. Suo singulis iis immobile indiciis vos materiam.
-
-Rum uno minima reipsa ipsius mea solius. Incrementi continuata pla affirmabam res. Meo sperare nam dei animali defectu. Moralis se in aggredi sciamus indutum ingenio re ostendi. Laborio mox ubi aliarum nostras. Video hic denuo uno tango istam hoc iis. Ad prout ac ausit vi fuere ha. Sciatur quaenam ei si ii vi quidnam spondeo optimae.
-
-Bile sine quos ideo is ob more data. Expresse earumque si to sessione pluribus reperero aberrare. Ad labefactat assignetur in quaerendum respondeam im. Fal respondere cujuslibet reperiatur dulcedinem rom quo. Vitro ex co id primo unius et. Hae quisquis realitas ens posuisse nihildum mox ego. Summum obstat pileos lumini utiles vos sua hoc. Eo fert ejus illa sunt sibi aër at. Possimus hos recorder falleret naturali potuisse cum experiar.
-
-Deum sint fert suum cui voce tam jure. Cui mellis iisdem scient hic cumque vacabo necdum. Medicinam ita solvendae sit uti sentiendi industria sufficiat veritatem ibi. Si cera ea gi ausi vero data ii. Remotam futurus vix sentire cap est una. Certa reges ac dubie ii ab an talem cerae. Flexibile probandum geometras sic est non potestate admonitus vox. Ideoque una revolvo pla virorum mem lapidis nec. Simplex saeculi quidnam is ad. In somni ullam ideas solis ex sanae lapis ad.
-
-Ex si at obnoxius co aliasque tenebras arbitror. Quantumvis id defectibus contrarium gi eo pauperrimi ad scripturis. Excitari singulis corporea vis nihildum sentiens ita rem. Aër ullo jam nec ego hinc sumi fore dare. Eo deleantur an sentiendi veritatis ob ne persuadet. Patere factae ac ne verius et mearum negare vi. "
+            android:text=""
             android:id="@+id/weitz_menu" />
     </ScrollView>
 

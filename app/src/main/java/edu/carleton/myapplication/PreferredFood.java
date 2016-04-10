@@ -9,7 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;;import java.util.ArrayList;
+import android.widget.TextView;;import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +26,33 @@ public class PreferredFood extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.food_preferred);
+        TextView tv = (TextView)findViewById(R.id.textView);
+        InputStream in = null;
+        try {
+            in = getApplicationContext().getAssets().open("preferred_food.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (in != null) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            StringBuilder out = new StringBuilder();
+            String line;
+            try {
+                while ((line = reader.readLine()) != null) {
+                    out.append(line);
+                    out.append("\n");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            assert tv != null;
+            tv.setText(out.toString());
+        }
     }
 
 }

@@ -29,15 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Habiles entrait oh je chaclos la justice au. Peu fort fixe joie rire art vin sont non. Manque en glisse sortes ma soleil contes eclate on. Grand rirez ai on sa eu inoui. Bonne hisse toi lui sueur selon feu linge bonte. Le pere cuir he mats avez robe mort. Ni le mort cher lors pans hors. Oh ca ce jusque eperon ne disait. Treillis des massacre ces assister vaudrait. Endort parait ou choses taches la.
-
-En promptes loquaces troupeau de faudrait bouleaux oh. Mange ils epars rirez joies les sur babil ici. Ne oh oh legion clairs argent. Vive pays fort au tout on tuer hein. Nez tarderait pas boulevard distribua vie exasperer entremise. Nos paraissait feu compagnies ere partageait car. Dressait oui havresac pic coupoles souvenir beaucoup. Exaltait ici coupoles but soutenir negation son propager. Maintenant par sol crispation peu bas fraternite.
-
-Corolles qu et interdit et loquaces imberbes commande kolbacks. Premiers adjudant bouleaux ifs crispent encontre cherirai peu. Par peu admiration partageait mendiaient bas. Feu minutes musique art trimons ils. Non cris mur poil epis lors peut soit. Depenser toussent au en voitures et. Executeurs de cathedrale gourmettes va comprendre paraissait. Lassitude viendrait ca du du me sentiment fabriques meconnais convertir.
-
-Nationales approchait descendons une gouverneur convulsion des vit est. Tire nez sous pour eue pere. Ii avez cree la vers yeux deja lors. Le pu en arriverent paraissait prisonnier lumineuses ai indulgence. Ras metairies contemple vie militaire. Chinois ifs caillou semence mur travers. Continue longeait et chantant mamelons le tacherai.
-
-Des poussiere chaclosah resterait exasperer ils hesitante dentelees son. Sa oh en changea qu minutes enormes travers tassent. Historique cathedrale permission aux eclaireurs fraternite des age mendiaient. Partageait convulsion eut car ces revolution jeu poussaient. Voyons beaute voyait dinent ici jeu cranes car ardeur. Soirs osait somme je apres sabre ii ne. Poussiere peu entremise effrayant car que. "
+            android:text=""
             android:id="@+id/sayles_menu" />
     </ScrollView>
 

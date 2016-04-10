@@ -18,6 +18,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.io.PrintWriter;
 
+// Fetching Web data using App
 
 public class MenuFinder {
     public static void menuSync(Context context) throws IOException {
@@ -25,7 +26,6 @@ public class MenuFinder {
         int dayOfWeek = calendar.DAY_OF_WEEK - 1;
         //int dayOfWeek = 6;
         String dayNumber = "-" + dayOfWeek + "\">";
-        Log.i("AAAAAAAAAAAAAAAAAAA",dayNumber);
         List<List<String>> LDCWholeMenuList = Get_WholeMenuList("http://legacy.cafebonappetit.com/weekly-menu/106685", dayNumber);
         List<List<String>> BurtonWholeMenuList = Get_WholeMenuList("http://legacy.cafebonappetit.com/weekly-menu/106686", dayNumber);
         List<List<String>> WeitzWholeMenuList = Get_WholeMenuList("http://legacy.cafebonappetit.com/weekly-menu/106642", dayNumber);

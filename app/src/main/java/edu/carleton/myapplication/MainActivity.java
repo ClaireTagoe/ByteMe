@@ -26,9 +26,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Try fetching data on Main Thread
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+//        try {
+//            MenuFinder.menuSync(getApplicationContext());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
+//         //Try using a new Thread
 //        Thread thread = new Thread() {
 //            @Override
 //            public void run() {
@@ -37,15 +44,13 @@ public class MainActivity extends AppCompatActivity {
 //                    Log.i("END", "End");
 //                } catch (MalformedURLException e) {
 //                    Log.d("MFUE", "MFUE");
+//                } catch (IOException e) {
+//                    e.printStackTrace();
 //                }
 //            }
 //        };
 //        thread.start();
-        try {
-            MenuFinder.menuSync(getApplicationContext());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         startService(new Intent(this,NotificationService.class));
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -78,14 +83,14 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onBurtonClick(View view) {
         //do something when button is clicked.
-        try {
-            MenuFinder.menuSync(getApplicationContext());
-            Log.i("END", "End");
-        } catch (MalformedURLException e) {
-            Log.d("MFUE", "MFUE");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            MenuFinder.menuSync(getApplicationContext());
+//            Log.i("END", "End");
+//        } catch (MalformedURLException e) {
+//            Log.d("MFUE", "MFUE");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         Intent intent = new Intent(this, BurtonMenu.class);
         startActivity(intent);
     }
