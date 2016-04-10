@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">ByteMe</string>
     <string name="title_activity_settings">Settings</string>
+    <style name="ActionBar" parent="@style/Theme.AppCompat.Light">
+        <item name="icon">@mipmap/ic_launcher</item>
+    </style>
 
     <!-- Strings related to Settings -->
 

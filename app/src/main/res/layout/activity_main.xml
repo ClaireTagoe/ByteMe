@@ -13,7 +13,7 @@
     android:background="#274862">
 
     <Button
-        android:layout_width="600px"
+        android:layout_width="match_parent"
         android:layout_height="150px"
         android:text="Burton"
         android:id="@+id/burton_button"
@@ -28,7 +28,7 @@
         android:typeface="serif" />
 
     <Button
-        android:layout_width="600px"
+        android:layout_width="match_parent"
         android:layout_height="150px"
         android:text="LDC"
         android:id="@+id/ldc_button"
@@ -43,7 +43,7 @@
         android:typeface="serif" />
 
     <Button
-        android:layout_width="600px"
+        android:layout_width="match_parent"
         android:layout_height="150px"
         android:text="Sayles"
         android:id="@+id/sayles_button"
@@ -57,7 +57,7 @@
         android:typeface="serif" />
 
     <Button
-        android:layout_width="600px"
+        android:layout_width="match_parent"
         android:layout_height="150px"
         android:text="Weitz Café"
         android:id="@+id/weitz_button"
@@ -70,21 +70,24 @@
         android:textSize="30dp"
         android:typeface="serif" />
 
-    <Space
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="50px"
-        android:layout_weight="0.32" />
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_weight="0.8"
+        android:src="@mipmap/sp"/>
+
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150px"
         android:gravity="bottom|center"
         android:baselineAligned="false">
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="150px"
             android:text="Favorite"
             android:id="@+id/button"
             android:onClick="onButtonClick"
@@ -97,7 +100,7 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="150px"
             android:text="Edit Tag"
             android:id="@+id/button2"
             android:layout_gravity="center"
@@ -108,7 +111,7 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="150px"
             android:text="Settings"
             android:id="@+id/button3"
             android:layout_gravity="center"

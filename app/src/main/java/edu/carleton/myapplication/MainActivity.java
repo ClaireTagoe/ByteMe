@@ -3,6 +3,7 @@ package edu.carleton.myapplication;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.StrictMode;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+
+import static android.os.SystemClock.sleep;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,10 +28,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_splashscreen);
+        //sleep(1000);
         setContentView(R.layout.activity_main);
         // Try fetching data on Main Thread
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
 //        try {
 //            MenuFinder.menuSync(getApplicationContext());
 //        } catch (Exception e) {
@@ -50,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        };
 //        thread.start();
-
         startService(new Intent(this,NotificationService.class));
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
