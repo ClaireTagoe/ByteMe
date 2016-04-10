@@ -1,20 +1,25 @@
 package edu.carleton.myapplication;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyFood extends ListActivity {
-    ArrayList<String> listItems = new ArrayList<String>();
+    EditText editText;
     ArrayAdapter<String> adapter;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -27,19 +32,43 @@ public class MyFood extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_food);
+        editText = (EditText)findViewById(R.id.et);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
         adapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
-                listItems);
+                FoodList.food);
         setListAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        
+
+    }
+    public void addButtonClick(View view){
+        FoodList.food.add(editText.getText().toString());
+        adapter.notifyDataSetChanged();
+        editText.setText("");
     }
 
-    public void addItems(View v) {
-        listItems.add("food");
-        adapter.notifyDataSetChanged();
-    }
+
+
+   // public void addItems(EditText et) {
+//        new AlertDialog.Builder(this)
+//                .setTitle("New Food")
+//                .setMessage("Type new food to add")
+//                .setView(food_text)
+//                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int whichButton) {
+//                        newfood=food_text.getText().toString();
+//                    }
+//                })
+//                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int whichButton) {
+//                    }
+//                })
+//            .show()
+    //}
 
     @Override
     public void onStart() {

@@ -9,10 +9,12 @@ import java.util.Set;
  * Created by Survivor on 2016/4/9.
  */
 public class FoodList {
-    public static Set<String> food = new HashSet<String>();
+    public static List<String> food = new ArrayList<String>();
 
     public void add(String foodName){
-        food.add(foodName);
+        if (!food.contains(foodName)){
+            food.add(foodName);
+        }
     }
 
     public void remove(String foodName){
