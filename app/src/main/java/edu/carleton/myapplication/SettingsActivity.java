@@ -79,15 +79,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                         preference.setSummary(name);
                     }
                 }
-//            } else if (preference instanceof MultiSelectListPreference){
-//                MultiSelectListPreference mslp = (MultiSelectListPreference) preference;
-//                Set<String> values = mslp.getValues();
-//                for (String v:values){
-//                    FoodList.food.remove(v);
-//                }
-            } else if (preference instanceof EditTextPreference){
-                EditTextPreference etp = (EditTextPreference) preference;
-                FoodList.food.add(etp.getText());
             }
             return true;
         }

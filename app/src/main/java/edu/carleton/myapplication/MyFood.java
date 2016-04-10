@@ -66,32 +66,16 @@ public class MyFood extends ListActivity {
 
     }
     public void addButtonClick(View view){
-        String newfood = editText.getText().toString();
+        String newfood = editText.getText().toString().trim();
         if (!(food.contains(newfood))) {
-            food.add(newfood);
+            if (!newfood.equals("")) {
+                food.add(newfood);
+            }
         }
         adapter.notifyDataSetChanged();
         editText.setText("");
     }
 
-
-
-   // public void addItems(EditText et) {
-//        new AlertDialog.Builder(this)
-//                .setTitle("New Food")
-//                .setMessage("Type new food to add")
-//                .setView(food_text)
-//                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int whichButton) {
-//                        newfood=food_text.getText().toString();
-//                    }
-//                })
-//                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int whichButton) {
-//                    }
-//                })
-//            .show()
-    //}
 
     @Override
     public void onStart() {
