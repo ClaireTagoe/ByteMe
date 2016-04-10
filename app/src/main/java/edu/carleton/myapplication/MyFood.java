@@ -8,8 +8,10 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -21,6 +23,7 @@ import java.util.List;
 public class MyFood extends ListActivity {
     EditText editText;
     ArrayAdapter<String> adapter;
+    public static List<String> food = new ArrayList<String>();
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -38,15 +41,35 @@ public class MyFood extends ListActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
         adapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
-                FoodList.food);
+                food);
         setListAdapter(adapter);
         adapter.notifyDataSetChanged();
 
-        
+        ListView lv = (ListView)findViewById(android.R.id.list);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+                AlertDialog.Builder adb = new AlertDialog.Builder(MyFood.this);
+                adb.setTitle("Delete?");
+                String foodName = food.get(position);
+                adb.setMessage("Are you sure you want to delete " + foodName);
+                final int positionToRemove = position;
+                adb.setNegativeButton("Cancel", null);
+                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        food.remove(positionToRemove);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                adb.show();
+            }
+        });
 
     }
     public void addButtonClick(View view){
-        FoodList.food.add(editText.getText().toString());
+        String newfood = editText.getText().toString();
+        if (!(food.contains(newfood))) {
+            food.add(newfood);
+        }
         adapter.notifyDataSetChanged();
         editText.setText("");
     }
