@@ -25,7 +25,6 @@
         android:layout_marginTop="25dp"
         android:textColor="#FFFFFF"
         android:textSize="30dp"
-        android:theme="Helv"
         android:typeface="serif" />
 
     <Button
