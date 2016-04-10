@@ -12,20 +12,15 @@
     android:weightSum="1">
 
     <Button
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Burton"
         android:id="@+id/burton_button"
         android:layout_weight="0.06"
         android:onClick="onBurtonClick" />
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></LinearLayout>
-
     <Button
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="LDC"
         android:id="@+id/ldc_button"
@@ -35,7 +30,7 @@
         android:onClick="onLDCClick" />
 
     <Button
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sayles"
         android:id="@+id/sayles_button"
@@ -44,7 +39,7 @@
         android:onClick="onSaylesClick" />
 
     <Button
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Weitz Café"
         android:id="@+id/weitz_button"
@@ -55,38 +50,41 @@
     <Space
         android:layout_width="356dp"
         android:layout_height="85dp"
-        android:layout_weight="0.89" />
+        android:layout_weight="0.58" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:gravity="center"
+        android:gravity="bottom|center"
         android:baselineAligned="false">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="My Menu"
             android:id="@+id/button"
             android:layout_gravity="bottom"
-            android:onClick="onButtonClick"/>
+            android:onClick="onButtonClick"
+            android:gravity="top" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="My Food"
             android:id="@+id/button2"
             android:layout_gravity="bottom"
-            android:onClick="onButtonClick" />
+            android:onClick="onFoodClick"
+            android:gravity="top" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="Settings"
             android:id="@+id/button3"
             android:layout_gravity="bottom"
-            android:onClick="onSettingClick" />
+            android:onClick="onSettingClick"
+            android:gravity="top" />
     </LinearLayout>
 
 </LinearLayout>

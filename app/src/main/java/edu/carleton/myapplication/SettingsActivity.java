@@ -79,12 +79,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                         preference.setSummary(name);
                     }
                 }
-            } else if (preference instanceof MultiSelectListPreference){
-                MultiSelectListPreference mslp = (MultiSelectListPreference) preference;
-                Set<String> values = mslp.getValues();
-                for (String v:values){
-                    FoodList.food.remove(v);
-                }
+//            } else if (preference instanceof MultiSelectListPreference){
+//                MultiSelectListPreference mslp = (MultiSelectListPreference) preference;
+//                Set<String> values = mslp.getValues();
+//                for (String v:values){
+//                    FoodList.food.remove(v);
+//                }
             } else if (preference instanceof EditTextPreference){
                 EditTextPreference etp = (EditTextPreference) preference;
                 FoodList.food.add(etp.getText());
@@ -123,11 +123,11 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                         .getString(preference.getKey(), ""));
     }
 
-    private static void changeValuesForFoodList(Preference preference){
-        preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
-        String s = "nothing";
-        sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,s);
-    }
+//    private static void changeValuesForFoodList(Preference preference){
+//        preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
+//        String s = "nothing";
+//        sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,s);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +142,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             // Show the Up button in the action bar.
-            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(false);
         }
     }
 
@@ -169,37 +169,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      */
     protected boolean isValidFragment(String fragmentName) {
         return PreferenceFragment.class.getName().equals(fragmentName)
-                || GeneralPreferenceFragment.class.getName().equals(fragmentName)
                 || DataSyncPreferenceFragment.class.getName().equals(fragmentName)
                 || NotificationPreferenceFragment.class.getName().equals(fragmentName);
     }
 
-    /**
-     * This fragment shows general preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class GeneralPreferenceFragment extends PreferenceFragment {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_general);
-            setHasOptionsMenu(true);
-
-            changeValuesForFoodList(findPreference("add_food"));
-            changeValuesForFoodList(findPreference("remove_food"));
-        }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            int id = item.getItemId();
-            if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
-                return true;
-            }
-            return super.onOptionsItemSelected(item);
-        }
-    }
 
     /**
      * This fragment shows notification preferences only. It is used when the
@@ -248,25 +221,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // updated to reflect the new value, per the Android Design
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("sync_frequency"));
-        }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            int id = item.getItemId();
-            if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
-                return true;
-            }
-            return super.onOptionsItemSelected(item);
-        }
-    }
-    public static class CreditsPreferenceFragment extends PreferenceFragment {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_credits);
-            setHasOptionsMenu(true);
-
         }
 
         @Override

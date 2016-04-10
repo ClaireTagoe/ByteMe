@@ -3,11 +3,6 @@
     <!-- These settings headers are only used on tablets. -->
 
     <header
-        android:fragment="edu.carleton.myapplication.SettingsActivity$GeneralPreferenceFragment"
-        android:icon="@drawable/ic_info_black_24dp"
-        android:title="My Food" />
-
-    <header
         android:fragment="edu.carleton.myapplication.SettingsActivity$NotificationPreferenceFragment"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/pref_header_notifications" />
@@ -16,10 +11,5 @@
         android:fragment="edu.carleton.myapplication.SettingsActivity$DataSyncPreferenceFragment"
         android:icon="@drawable/ic_sync_black_24dp"
         android:title="@string/pref_header_data_sync" />
-
-    <header
-        android:fragment="edu.carleton.myapplication.SettingsActivity$CreditsPreferenceFragment"
-        android:icon="@drawable/ic_info_black_24dp"
-        android:title="Credits" />
 
 </preference-headers>
